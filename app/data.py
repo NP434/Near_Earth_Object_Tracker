@@ -5,9 +5,7 @@ from requests import get
 import streamlit as st
 import os
 
-headers = {
-    "authorization": st.secrets["API_KEY"]
-}
+API_KEY = st.secrets["API_KEY"]
 
 def get_data() -> dict:
 
@@ -24,7 +22,7 @@ def get_data() -> dict:
             neos_data = raw_data.get('near_earth_objects', {})
             #exctract the NEO's for the given date and the specified characteristics of each NEO
             neo_dict = {date_key: [{ "name": neo['name'],
-                                "diameter km":neo['estimated_diameter']['kilometers']['estimated_diameter_max'],
+                                "diameter km":int(neo['estimated_diameter']['kilometers']['estimated_diameter_max']),
                                 "diameter ft":neo['estimated_diameter']['feet']['estimated_diameter_max'],
                                 'hazardous': neo['is_potentially_hazardous_asteroid'],
                                 "velocity_Km": neo['close_approach_data'][0]['relative_velocity']['kilometers_per_hour'],
