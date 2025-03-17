@@ -6,6 +6,8 @@ st.set_page_config(
 )
 
 objects = get_data()
+if objects == None:
+    st.write("No data found")
 
 st.title("Near earth Objects over the past week")
 
