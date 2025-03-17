@@ -21,15 +21,20 @@ def get_data() -> dict:
                 dump(raw_data, file, indent = 4, sort_keys= True)
             neos_data = raw_data.get('near_earth_objects', {})
             #exctract the NEO's for the given date and the specified characteristics of each NEO
-            neo_dict = {date_key: [{ "name": neo['name'],
-                                "diameter km":round(neo['estimated_diameter']['kilometers']['estimated_diameter_max'], 2),
-                                "diameter ft":round(neo['estimated_diameter']['feet']['estimated_diameter_max'],2),
-                                'hazardous': neo['is_potentially_hazardous_asteroid'],
-                                "velocity_Km": round(float(neo['close_approach_data'][0]['relative_velocity']['kilometers_per_hour']),2),
-                                "velocity_miles": round(float(neo['close_approach_data'][0]['relative_velocity']['miles_per_hour']),2),
-                                "miss_distance_km": round(float(neo['close_approach_data'][0]['miss_distance']['kilometers']),2),
-                                "miss_distance_miles": round(float(neo['close_approach_data'][0]['miss_distance']['miles']),2)
-                                } for neo in neos_on_date ] for date_key, neos_on_date in neos_data.items() }
+            for date_key, neos_on_date in neos_data.items():
+                daily_count = len(neos_on_date)
+                total_count += daily_count
+                neo_dict = {date_key: [{ "name": neo['name'],
+                        "diameter km":round(neo['estimated_diameter']['kilometers']['estimated_diameter_max'], 2),
+                        "diameter ft":round(neo['estimated_diameter']['feet']['estimated_diameter_max'],2),
+                        'hazardous': neo['is_potentially_hazardous_asteroid'],
+                        "velocity_Km": round(float(neo['close_approach_data'][0]['relative_velocity']['kilometers_per_hour']),2),
+                        "velocity_miles": round(float(neo['close_approach_data'][0]['relative_velocity']['miles_per_hour']),2),
+                        "miss_distance_km": round(float(neo['close_approach_data'][0]['miss_distance']['kilometers']),2),
+                        "miss_distance_miles": round(float(neo['close_approach_data'][0]['miss_distance']['miles']),2)
+                    } for neo in neos_on_date ]
+                 }
+            neo_dict["total_objects"] = total_count
             return neo_dict
     except Exception as e:
         print(e)
