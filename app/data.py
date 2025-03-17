@@ -10,7 +10,7 @@ def get_data() -> dict:
     current_date = date.today()
     start_date = (current_date.replace(day = current_date.day - 7)) 
     try:
-        response = get(f"https://api.nasa.gov/neo/rest/v1/feed?start_date={start_date}&end_date={current_date}&api_key=")
+        response = get(f"https://api.nasa.gov/neo/rest/v1/feed?start_date={start_date}&end_date={current_date}&api_key={API_KEY}")
         raw_data = response.json()
         if raw_data is None:
             neo_dict = None
