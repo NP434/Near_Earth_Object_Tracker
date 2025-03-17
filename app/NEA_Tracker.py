@@ -10,6 +10,6 @@ objects = get_data()
 
 st.title("Near earth Objects over the past week")
 st.write(objects)
-df = pd.DataFrame(objects, columns = (i['name'] for i in objects.items()))
-st.dataframe(df)
+
+st.dataframe(objects, column_order="col2")
 
