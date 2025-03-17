@@ -11,6 +11,12 @@ objects = get_data()
 
 st.title("Near earth Objects over the past week")
 st.write(objects)
-
-st.dataframe(objects,hide_index=False)
+neo_list = []
+for date_key, neos_on_date in neos_data.items():
+    for neo in neos_on_date:
+        neo_entry = {"Date": date_key}
+        neo_entry.update(neo)
+        neo_list.append(neo_entry)
+df = pd.DataFrame(neo_list)
+st.dataframe(df)
 
