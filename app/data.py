@@ -4,17 +4,17 @@ from dateutil import tz
 from requests import get
 import streamlit as st
 import os
-DATA_FILE = "./app/data/asteroids.json"
+
+headers = {
+    "authorization": st.secrets["API_KEY"]
+}
 
 def get_data() -> dict:
 
     current_date = date.today()
     start_date = (current_date.replace(day = current_date.day - 7)) 
     try:
-        api_key = os.getenv(API_KEY)
-        if not api_key:
-            raise ValueError("API key not found")
-        response = get(f"https://api.nasa.gov/neo/rest/v1/feed?start_date={start_date}&end_date={current_date}&api_key={api_key}")
+        response = get(f"https://api.nasa.gov/neo/rest/v1/feed?start_date={start_date}&end_date={current_date}&api_key={API_KEY}")
         raw_data = response.json()
         if raw_data is None:
             neo_dict = None
@@ -36,3 +36,5 @@ def get_data() -> dict:
             return neo_dict
     except Exception as e:
         print(e)
+data = get_data()
+print(data)
