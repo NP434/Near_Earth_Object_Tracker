@@ -18,5 +18,5 @@ for date_key, neos_on_date in objects.items():
         neo_entry.update(neo)
         neo_list.append(neo_entry)
 df = pd.DataFrame(neo_list)
-st.dataframe(df, column_order=("col2","col1","col3","col4","col5","col6","col7","col8","col9"), hide_index=True)
+st.dataframe(df, hide_index=True)
 
