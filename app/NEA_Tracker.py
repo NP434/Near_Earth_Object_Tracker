@@ -11,5 +11,5 @@ objects = get_data()
 st.title("Near earth Objects over the past week")
 st.write(objects)
 
-st.dataframe(objects, st.column_config.DateColumn("Date",format="%d"))
+st.dataframe(objects, st.column_config.DateColumn("Date"))
 
