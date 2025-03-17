@@ -5,9 +5,8 @@ from requests import get
 import streamlit as st
 import os
 
-headers = {
-    "authorization": st.secrets["API_KEY"]
-}
+API_KEY = st.secrets["API_KEY"]
+
 
 def get_data() -> dict:
 
