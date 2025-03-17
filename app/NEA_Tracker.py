@@ -8,6 +8,6 @@ st.set_page_config(
 objects = get_data()
 
 st.title("Near earth Objects over the past week")
-
+st.write(objects)
 st.dataframe(objects,column_order=("col2","col1"))
 
