@@ -23,12 +23,12 @@ def get_data() -> dict:
             #exctract the NEO's for the given date and the specified characteristics of each NEO
             neo_dict = {date_key: [{ "name": neo['name'],
                                 "diameter km":round(neo['estimated_diameter']['kilometers']['estimated_diameter_max'], 2),
-                                "diameter ft":neo['estimated_diameter']['feet']['estimated_diameter_max'],
+                                "diameter ft":round(neo['estimated_diameter']['feet']['estimated_diameter_max'],2),
                                 'hazardous': neo['is_potentially_hazardous_asteroid'],
-                                "velocity_Km": neo['close_approach_data'][0]['relative_velocity']['kilometers_per_hour'],
-                                "velocity_miles": neo['close_approach_data'][0]['relative_velocity']['miles_per_hour'],
-                                "miss_distance_km": neo['close_approach_data'][0]['miss_distance']['kilometers'],
-                                "miss_distance_miles": neo['close_approach_data'][0]['miss_distance']['miles']
+                                "velocity_Km": round(neo['close_approach_data'][0]['relative_velocity']['kilometers_per_hour'],2),
+                                "velocity_miles": round(neo['close_approach_data'][0]['relative_velocity']['miles_per_hour'],2),
+                                "miss_distance_km": round(neo['close_approach_data'][0]['miss_distance']['kilometers'],2),
+                                "miss_distance_miles": round(neo['close_approach_data'][0]['miss_distance']['miles'],2)
                                 } for neo in neos_on_date ] for date_key, neos_on_date in neos_data.items() }
             return neo_dict
     except Exception as e:
