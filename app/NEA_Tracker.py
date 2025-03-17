@@ -12,5 +12,5 @@ objects = get_data()
 st.title("Near earth Objects over the past week")
 st.write(objects)
 
-st.dataframe(objects)
+st.dataframe(objects,hide_index=False)
 
