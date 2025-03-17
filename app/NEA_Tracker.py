@@ -9,5 +9,5 @@ objects = get_data()
 
 st.title("Near earth Objects over the past week")
 
-
+st.write(objects)
 
