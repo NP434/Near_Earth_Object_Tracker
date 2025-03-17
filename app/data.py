@@ -12,6 +12,8 @@ def get_data() -> dict:
     start_date = (current_date.replace(day = current_date.day - 7)) 
     try:
         api_key = os.getenv(API_KEY)
+        if not api_key:
+            raise ValueError("API key not found")
         response = get(f"https://api.nasa.gov/neo/rest/v1/feed?start_date={start_date}&end_date={current_date}&api_key={api_key}")
         raw_data = response.json()
         if raw_data is None:
