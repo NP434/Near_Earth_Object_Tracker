@@ -9,5 +9,5 @@ objects = get_data()
 
 st.title("Near earth Objects over the past week")
 
-st.dataframe(objects)
+st.dataframe(objects,column_order=("col2","col1"))
 
