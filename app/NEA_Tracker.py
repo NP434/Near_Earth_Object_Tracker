@@ -11,4 +11,3 @@ st.title("Near earth Objects over the past week")
 
 
 
-st.table(objects.get("properties").get("periods"))
