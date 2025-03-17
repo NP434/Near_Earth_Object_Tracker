@@ -3,6 +3,7 @@ from datetime import date
 from dateutil import tz
 from requests import get
 import streamlit as st
+import os
 DATA_FILE = "./app/data/asteroids.json"
 
 def get_data() -> dict:
@@ -10,7 +11,8 @@ def get_data() -> dict:
     current_date = date.today()
     start_date = (current_date.replace(day = current_date.day - 7)) 
     try:
-        response = get(f"https://api.nasa.gov/neo/rest/v1/feed?start_date={start_date}&end_date={current_date}&api_key={process.env.API_KEY}")
+        api_key = os.getenv(API_KEY)
+        response = get(f"https://api.nasa.gov/neo/rest/v1/feed?start_date={start_date}&end_date={current_date}&api_key={api_key}")
         raw_data = response.json()
         if raw_data is None:
             neo_dict = None
