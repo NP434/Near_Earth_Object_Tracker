@@ -3,11 +3,13 @@ from data import get_data
 import pandas as pd
 
 objects,total_count = get_data()
-units = st.radio("Select the Units: ",("Metric","Imperial"))
+
 st.title("Table view")
+col1, col2 =st.columns([3,1])
+units = col2.st.radio("Select the Units: ",("Metric","Imperial"))
 df = pd.DataFrame(objects)
 if units == "Metric":
     df = df.drop(columns=["Diameter (ft)", "Velocity (miles/h)"], errors="ignore")
 else:
     df = df.drop(columns=["Diameter (km)", "Velocity (km/h)"], errors="ignore")
-st.dataframe(df, hide_index=True)
+col1.st.dataframe(df, hide_index=True)
