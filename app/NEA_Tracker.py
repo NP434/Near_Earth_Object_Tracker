@@ -36,7 +36,7 @@ for neo in objects:
         x=[x], y=[y],
         mode='markers+text',
         marker=dict(size=8, color='red'),
-        text=[f"{neo['Name']} ({neo['Miss Distance (km)']:,} km)"],
+        text=[f"{neo['Name']} ({neo['Miss Distance (Lunar)']:,} km)"],
         textposition="top right"
     ))
 
