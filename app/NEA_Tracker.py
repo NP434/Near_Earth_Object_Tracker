@@ -45,8 +45,8 @@ fig.update_layout(
     title="Near-Earth Objects Distance Plot (Zoomable)",
     xaxis_title="Distance (scaled)",
     yaxis_title="Distance (scaled)",
-    xaxis=dict(scaleanchor="y", scaleratio=1, range =[-0.5,0.5]),
-    yaxis=dict(scaleanchor="x", scaleratio=1, range =[-0.5,0.5]),
+    xaxis=dict(scaleanchor="y", scaleratio=1, range =[-0.25,0.25]),
+    yaxis=dict(scaleanchor="x", scaleratio=1, range =[-0.25,0.25]),
     showlegend=False,
     hovermode='closest'
 )
