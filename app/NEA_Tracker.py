@@ -37,7 +37,7 @@ for neo in objects:
         mode='markers+text',
         marker=dict(size=4, color='red'),
         text=[f"{neo['Name']}"],
-        textposition="bottom middle"
+        textposition="bottom left"
     ))
 
     
