@@ -9,7 +9,7 @@ st.set_page_config(
 
 objects = get_data()
 
-st.title("Near earth Objects over the past week")
+st.title("Near earth Objects")
 total_objects = 0
 counts = {}
 for date, date_data in objects.items():
@@ -20,8 +20,9 @@ for date, date_data in objects.items():
 
     # Display counts in Streamlit
 st.write("### NEO Count Per Day:")
+st.write(f"Total number of objects over past 7 days: {total_objects}")
 for date, count in counts.items():
     st.write(f"**{date}**: {count} NEO(s)")
 
-st.write(f"### Total NEOs Over Period: {total_objects}")
+
 
