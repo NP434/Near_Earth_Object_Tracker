@@ -22,8 +22,8 @@ scale_factor = 1e-1
 for neo in objects:
     distance = neo["Miss Distance (Lunar)"] * scale_factor
     angle = np.random.uniform(0,2* np.pi)
-    x = (distance + 2) * np.cos(angle)
-    y = (distance + 2) * np.sin(angle)
+    x = (distance + 1.5) * np.cos(angle)
+    y = (distance + 1.5) * np.sin(angle)
     ax.plot(x, y, 'ro')
     ax.text(x, y, f"{neo['Name']}",
              fontsize=4, ha='right')
