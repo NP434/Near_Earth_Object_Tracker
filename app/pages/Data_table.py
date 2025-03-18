@@ -6,7 +6,7 @@ objects,total_count = get_data()
 
 st.title("Table view")
 refresh_button = st.sidebar.button("Refresh", type="primary", on_click=reset_cache)
-col1, col2 =st.columns([3,1], border = True)
+col1, col2 =st.columns(2, border = True)
 with col2:
     units = st.radio("Select the Units: ",("Metric","Imperial"),horizontal=True)
 df = pd.DataFrame(objects)
