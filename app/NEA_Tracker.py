@@ -30,8 +30,8 @@ scale_factor = 1e-2
 for neo in objects:
     distance = neo["Miss Distance (Lunar)"] * scale_factor
     angle = np.random.uniform(0,2* np.pi)
-    x = (distance + 1.5) * np.cos(angle)
-    y = (distance + 1.5) * np.sin(angle)
+    x = distance * np.cos(angle)
+    y = distance  * np.sin(angle)
     fig.add_trace(go.Scatter(
         x=[x], y=[y],
         mode='markers+text',
