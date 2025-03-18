@@ -23,11 +23,11 @@ def get_data() -> dict:
            
         neo_list = []  # Flat list for display
         total_count = 0  # Track total count
-        day_counts = []
+        daily_counts = []
         for date_key, neos_on_date in neos_data.items():
             day_count = len(neos_on_date)  # Update total count
             total_count += day_count
-            day_counts[date_key] = day_count
+            daily_counts[date_key] = day_count
 
             # Process NEO details and append to neo_list
             neo_list.extend([
@@ -45,7 +45,7 @@ def get_data() -> dict:
             ])
 
         st.session_state["total_count"] = total_count  # Store total count in Streamlit state
-        st.session_state["day_counts"] = day_counts  # Store total count in Streamlit state
+        st.session_state["daily_counts"] = daily_counts  # Store total count in Streamlit state
         return neo_list
     except Exception as e:
         print(e)
