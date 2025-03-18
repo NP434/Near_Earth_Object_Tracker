@@ -18,7 +18,7 @@ st.write(f"### Total Near earth objects over past 7 days: {st.session_state['tot
 fig, ax = plt.subplots(figsize =(8,8))
 earth = plt.Circle((0,0), 1, color='blue', label='Earth')
 ax.add_artist(earth)
-scale_factor = 1e-5
+scale_factor = 1e-7
 for neo in objects:
     distance = neo["Miss Distance (km)"] * scale_factor
     angle = np.random.uniform(0,2* np.pi)
