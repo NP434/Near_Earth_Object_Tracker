@@ -14,7 +14,9 @@ if objects is None:
 
 st.title("Near earth Objects")
 st.write(f"### Total Near earth objects over past 7 days: {st.session_state['total_count']}")
-
+st.write("Below is a visual representation of the N.E.O.'s distance from the earth "
+        "using Lunar units. Lunar units are the distance from the center of the earth to the moon"
+        "and is about 385,000 Kilometers, or 239,000 Miles ")
 fig, ax = plt.subplots(figsize =(10,10))
 earth = plt.Circle((0,0), 1, color='blue', label='Earth')
 ax.add_artist(earth)
