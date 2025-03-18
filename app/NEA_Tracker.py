@@ -8,7 +8,8 @@ st.set_page_config(
     page_title="Near Earth Asteroid Tracker"
 )
 
-objects = get_data()
+objects, total_count = get_data()
+st.session_state["total_count"] = total_count  # Store total count in Streamlit state
 if objects is None:
     st.write("No data available")
 

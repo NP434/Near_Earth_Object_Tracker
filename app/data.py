@@ -7,7 +7,8 @@ import os
 
 API_KEY = st.secrets["API_KEY"]
 
-def get_data() -> dict:
+@st.cache_data(ttl = 3600)
+def get_data() -> list:
 
     current_date = date.today()
     start_date = (current_date.replace(day = current_date.day - 7)) 
@@ -43,7 +44,7 @@ def get_data() -> dict:
                 } for neo in neos_on_date
             ])
 
-        st.session_state["total_count"] = total_count  # Store total count in Streamlit state
-        return neo_list
+        
+        return neo_list,total_count
     except Exception as e:
         print(e)
