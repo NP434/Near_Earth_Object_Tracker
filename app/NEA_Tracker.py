@@ -24,9 +24,9 @@ else:
     refresh_button = st.sidebar.button("Refresh", type="primary", on_click=reset_cache) 
     st.write("Below is a visual representation of the N.E.O.'s distance from the earth "
         "using Lunar units. Lunar units are the distance from the center of the earth to the moon"
-        "and is about 385,000 Kilometers, or 239,000 Miles. ")
-    """The below code is used to create the figure on the homepage of the site, this figure has a representation of earth, with 
-        scaled distance of each neo, depicted at different angular positions to preven clustering"""
+        " and is about 385,000 Kilometers, or 239,000 Miles. ")
+    #The below code is used to create the figure on the homepage of the site, this figure has a representation of earth, with 
+    #    scaled distance of each neo, depicted at different angular positions to preven clustering
     fig = go.Figure()
 
     fig.add_trace(go.Scatter(
@@ -63,6 +63,6 @@ else:
     )
 
     st.plotly_chart(fig, use_container_width=True)
-    st.write("DISCLAIMER: in the above graph, the angular positon of the markers is not representative of the N.E.O's actual positon, but is used"
+    st.write("DISCLAIMER: in the above graph, the angular position of the markers is not representative of the N.E.O's actual position, but is used"
             " to demonstrate the distance of the object without clustering the objects in a line. This also results in the angular position of each object varying when refreshing the data,"
             "but the distance remains the same.")
