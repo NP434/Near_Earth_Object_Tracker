@@ -26,7 +26,7 @@ fig.add_trace(go.Scatter(
     text=["Earth"],
     textposition="top center"
 ))
-scale_factor = 1e-4
+scale_factor = 1e-2
 for neo in objects:
     distance = neo["Miss Distance (Lunar)"] * scale_factor
     angle = np.random.uniform(0,2* np.pi)
@@ -45,8 +45,8 @@ fig.update_layout(
     title="Near-Earth Objects Distance Plot (Zoomable)",
     xaxis_title="Distance (scaled)",
     yaxis_title="Distance (scaled)",
-    xaxis=dict(scaleanchor="y", scaleratio=0.5),
-    yaxis=dict(scaleanchor="x", scaleratio=0.5),
+    xaxis=dict(scaleanchor="y", scaleratio=1),
+    yaxis=dict(scaleanchor="x", scaleratio=1),
     showlegend=False,
     hovermode='closest'
 )
