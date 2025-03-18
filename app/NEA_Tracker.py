@@ -12,7 +12,7 @@ objects = get_data()
 st.title("Near earth Objects over the past week")
 total_objects = 0
 counts = {}
-for date, date_data in object.items():
+for date, date_data in objects.items():
     if date != "total_objects":  # Ensure we don't count the total key
         daily_count = len(date_data)
         counts[date] = daily_count
