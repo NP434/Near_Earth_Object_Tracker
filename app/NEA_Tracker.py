@@ -26,7 +26,7 @@ for neo in objects:
     y = (distance + 1.5) * np.sin(angle)
     ax.plot(x, y, 'ro')
     ax.text(x, y, f"{neo['Name']}",
-             fontsize=6, ha='top')
+             fontsize=6, ha='left')
     
 max_distance = max(neo["Miss Distance (Lunar)"] for neo in objects) * scale_factor * 1.1
 ax.set_xlim(-max_distance, max_distance)
