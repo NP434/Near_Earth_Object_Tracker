@@ -1,7 +1,6 @@
 import streamlit as st
 from data import get_data
 import numpy as np
-import pandas as pd
 import matplotlib.pyplot as plt
 
 st.set_page_config(
