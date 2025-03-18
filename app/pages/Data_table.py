@@ -7,7 +7,7 @@ units = st.radio("Select the Units: ",("Metric","Imperial"))
 st.title("Table view")
 df = pd.DataFrame(objects)
 if units == "Metric":
-    df = df.drop(columns=["Diameter (ft)", "Velocity (miles/h)"], error="ignore")
+    df = df.drop(columns=["Diameter (ft)", "Velocity (miles/h)"], errors="ignore")
 else:
-    df = df.drop(columns=["Diameter (km)", "Velocity (km/h)"], error="ignore")
+    df = df.drop(columns=["Diameter (km)", "Velocity (km/h)"], errors="ignore")
 st.dataframe(df, hide_index=True)
