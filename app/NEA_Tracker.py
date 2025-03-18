@@ -1,5 +1,5 @@
 import streamlit as st
-from data import get_data
+from data import get_data,reset_cache
 import numpy as np
 import plotly.graph_objects as go
 
@@ -15,6 +15,7 @@ if objects is None:
 
 st.title("Near earth Objects")
 st.write(f"### Total Near earth objects over past 7 days: {total_count}")
+refresh_button = st.sidebar.button("Refresh", type="primary", on_click=reset_cache)
 st.write("Below is a visual representation of the N.E.O.'s distance from the earth "
         "using Lunar units. Lunar units are the distance from the center of the earth to the moon"
         "and is about 385,000 Kilometers, or 239,000 Miles. ")

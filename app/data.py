@@ -48,3 +48,7 @@ def get_data() -> list:
         return neo_list,total_count
     except Exception as e:
         print(e)
+
+def reset_cache() -> None:
+    """Clears the data cache"""
+    get_data().clear
