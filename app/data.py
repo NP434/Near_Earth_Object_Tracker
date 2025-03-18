@@ -37,8 +37,9 @@ def get_data() -> dict:
                     "Hazardous": neo['is_potentially_hazardous_asteroid'],
                     "Velocity (km/h)": round(float(neo['close_approach_data'][0]['relative_velocity']['kilometers_per_hour']), 2),
                     "Velocity (miles/h)": round(float(neo['close_approach_data'][0]['relative_velocity']['miles_per_hour']), 2),
-                    "Miss Distance (km)": round(float(neo['close_approach_data'][0]['miss_distance']['kilometers']), 2),
-                    "Miss Distance (miles)": round(float(neo['close_approach_data'][0]['miss_distance']['miles']), 2)
+                    "Miss Distance (AU)": round(float(neo['close_approach_data'][0]['miss_distance']['AU']), 2)
+                    #"Miss Distance (km)": round(float(neo['close_approach_data'][0]['miss_distance']['kilometers']), 2),
+                    #"Miss Distance (miles)": round(float(neo['close_approach_data'][0]['miss_distance']['miles']), 2)
                 } for neo in neos_on_date
             ])
 
