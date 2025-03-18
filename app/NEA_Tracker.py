@@ -28,7 +28,7 @@ for neo in objects:
     ax.text(x, y, f"{neo['Name']}",
              fontsize=4, ha='right')
     
-max_distance = max(neo["Miss Distance (km)"] for neo in objects) * scale_factor * 1.1
+max_distance = max(neo["Miss Distance (AU)"] for neo in objects) * scale_factor * 1.1
 ax.set_xlim(-max_distance, max_distance)
 ax.set_ylim(-max_distance, max_distance)
 ax.set_xlabel("Distance (scaled)")
