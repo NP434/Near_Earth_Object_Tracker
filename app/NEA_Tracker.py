@@ -38,7 +38,7 @@ for neo in objects:
         marker=dict(size=4, color='red'),
         text=[f"{neo['Name']}"],
         textposition="bottom right",
-        textfont=dict(size=4)
+        textfont=dict(size=8)
     ))
 
     
