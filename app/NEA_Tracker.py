@@ -16,11 +16,11 @@ st.title("Near earth Objects")
 st.write(f"### Total Near earth objects over past 7 days: {st.session_state['total_count']}")
 
 fig, ax = plt.subplots(figsize =(10,10))
-earth = plt.Circle((0,0), 0.5, color='blue', label='Earth')
+earth = plt.Circle((0,0), 1, color='blue', label='Earth')
 ax.add_artist(earth)
-#scale_factor = 1e-7
+scale_factor = 1e-7
 for neo in objects:
-    distance = neo["Miss Distance (Lunar)"] #* scale_factor
+    distance = neo["Miss Distance (Lunar)"] * scale_factor
     angle = np.random.uniform(0,2* np.pi)
     x = distance * np.cos(angle)
     y = distance * np.sin(angle)
@@ -28,7 +28,7 @@ for neo in objects:
     ax.text(x, y, f"{neo['Name']}",
              fontsize=4, ha='right')
     
-max_distance = max(neo["Miss Distance (Lunar)"] for neo in objects) #* scale_factor * 1.1
+max_distance = max(neo["Miss Distance (Lunar)"] for neo in objects) * scale_factor * 1.1
 ax.set_xlim(-max_distance, max_distance)
 ax.set_ylim(-max_distance, max_distance)
 ax.set_xlabel("Distance (scaled)")
