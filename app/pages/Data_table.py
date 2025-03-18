@@ -6,4 +6,4 @@ objects = get_data()
 
 st.title("Table view")
 df = pd.DataFrame(objects)
-st.dataframe(df)
+st.dataframe(df, hide_index=True)
