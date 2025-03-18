@@ -10,7 +10,7 @@ st.set_page_config(
 objects = get_data()
 
 st.title("Near earth Objects over the past week")
-st.write(objects)
+
 neo_list = []
 for date_key, neos_on_date in objects.items():
     for neo in neos_on_date:
