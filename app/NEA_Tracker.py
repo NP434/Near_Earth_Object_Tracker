@@ -35,8 +35,8 @@ for neo in objects:
     fig.add_trace(go.Scatter(
         x=[x], y=[y],
         mode='markers+text',
-        marker=dict(size=8, color='red'),
-        text=[f"{neo['Name']} ({neo['Miss Distance (Lunar)']:,} km)"],
+        marker=dict(size=6, color='red'),
+        text=[f"{neo['Name']}"],
         textposition="top right"
     ))
 
@@ -45,8 +45,8 @@ fig.update_layout(
     title="Near-Earth Objects Distance Plot (Zoomable)",
     xaxis_title="Distance (scaled)",
     yaxis_title="Distance (scaled)",
-    xaxis=dict(scaleanchor="y", scaleratio=10),
-    yaxis=dict(scaleanchor="x", scaleratio=10),
+    xaxis=dict(scaleanchor="y", scaleratio=0.5),
+    yaxis=dict(scaleanchor="x", scaleratio=0.5),
     showlegend=False,
     hovermode='closest'
 )
