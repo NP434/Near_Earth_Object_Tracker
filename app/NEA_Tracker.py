@@ -24,6 +24,6 @@ st.write(f"### Total number of objects over past 7 days: {total_objects}")
 st.write("### NEO Count Per Day:")
 for date, count in counts.items():
     st.write(f"**{date}**: {count} NEO(s)")
-chart_data = pd.DataFrame(counts, columns= counts[date])
+chart_data = pd.DataFrame(counts, columns=( date for date in counts))
 st.bar_chart(chart_data)
 
