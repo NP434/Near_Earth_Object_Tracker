@@ -16,7 +16,9 @@ def get_data() -> list:
         response = get(f"https://api.nasa.gov/neo/rest/v1/feed?start_date={start_date}&end_date={current_date}&api_key={API_KEY}")
         raw_data = response.json()
         if raw_data is None:
-            neo_dict = None
+            neo_list = None
+            total_count = 0
+
         else:
             with open("asteroids.json", "w") as file:
                 dump(raw_data, file, indent = 4, sort_keys= True)
