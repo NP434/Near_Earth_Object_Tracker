@@ -20,7 +20,7 @@ earth = plt.Circle((0,0), 1, color='blue', label='Earth')
 ax.add_artist(earth)
 scale_factor = 1e-7
 for neo in objects:
-    distance = neo["Miss Distance (km)"] * scale_factor
+    distance = neo["Miss Distance (AU)"] * scale_factor
     angle = np.random.uniform(0,2* np.pi)
     x = distance * np.cos(angle)
     y = distance * np.sin(angle)
