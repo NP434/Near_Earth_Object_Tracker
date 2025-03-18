@@ -44,9 +44,9 @@ for neo in objects:
 
     
 fig.update_layout(
-    title="Near-Earth Objects Distance Plot (Zoomable)",
-    xaxis_title="Distance (scaled)",
-    yaxis_title="Distance (scaled)",
+    title="Near-Earth Objects Distance from Earth",
+    xaxis_title="Distance (scaled), Lunar units",
+    yaxis_title="Distance (scaled), Lunar Units",
     xaxis=dict(scaleanchor="y", scaleratio=1, range =[-0.25,0.25]),
     yaxis=dict(scaleanchor="x", scaleratio=1, range =[-0.25,0.25]),
     showlegend=False,
