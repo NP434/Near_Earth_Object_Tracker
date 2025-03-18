@@ -1,12 +1,16 @@
+"""
+Author: Noah Perea
+Date: 3/18/2025
+Purpose: Homepage of the NEO tracker site
+Credit: Chat gpt was used to fix errors regarding display, and for the syntax of creating the plotly diagram.
+"""
 import streamlit as st
-from data import get_data,reset_cache
 import numpy as np
 import plotly.graph_objects as go
-
-
-st.set_page_config(
+st.set_page_config( # Placed to allow the test to function without the need for the API_KEY.
     page_title="Near Earth Asteroid Tracker"
 )
+from data import get_data,reset_cache
 
 objects, total_count = get_data()
 
@@ -17,10 +21,12 @@ if objects is None:
     st.write("### API Fetch Failed, No data Currently avaialble")
 else:
     st.write(f"### Total Near earth objects over past 7 days: {total_count}")
-    refresh_button = st.sidebar.button("Refresh", type="primary", on_click=reset_cache)
+    refresh_button = st.sidebar.button("Refresh", type="primary", on_click=reset_cache) 
     st.write("Below is a visual representation of the N.E.O.'s distance from the earth "
         "using Lunar units. Lunar units are the distance from the center of the earth to the moon"
         "and is about 385,000 Kilometers, or 239,000 Miles. ")
+    """The below code is used to create the figure on the homepage of the site, this figure has a representation of earth, with 
+        scaled distance of each neo, depicted at different angular positions to preven clustering"""
     fig = go.Figure()
 
     fig.add_trace(go.Scatter(
@@ -30,8 +36,8 @@ else:
         text=["Earth"],
         textposition="top center"
     ))
-    scale_factor = 1e-2
-    for neo in objects:
+    scale_factor = 1e-2 #used to scale the data to improve visibility
+    for neo in objects:  #Iterates over each neo and adds them to the figure
         distance = neo["Miss Distance (Lunar)"] * scale_factor
         angle = np.random.uniform(0,2* np.pi)
         x = (distance + 0.01) * np.cos(angle)
@@ -46,7 +52,7 @@ else:
         ))
 
     
-    fig.update_layout(
+    fig.update_layout(  #Sets the description and starting zoom level of the figure
         title="Near-Earth Objects Distance from Earth",
         xaxis_title="Distance (scaled), Lunar units",
         yaxis_title="Distance (scaled), Lunar Units",
