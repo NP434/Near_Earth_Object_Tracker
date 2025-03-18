@@ -6,7 +6,7 @@ import streamlit as st
 import os
 
 API_KEY = st.secrets["API_KEY"]
-@st.cache_data(ttl= 86400)
+@st.cache_data(ttl= 60)
 def get_data() -> dict:
 
     current_date = date.today()
