@@ -1,7 +1,7 @@
 import streamlit as st
 from data import get_data
 import numpy as np
-import matplotlib.pyplot as plt
+import plotly.graph_objects as go
 
 
 st.set_page_config(
@@ -17,26 +17,38 @@ st.write(f"### Total Near earth objects over past 7 days: {st.session_state['tot
 st.write("Below is a visual representation of the N.E.O.'s distance from the earth "
         "using Lunar units. Lunar units are the distance from the center of the earth to the moon"
         "and is about 385,000 Kilometers, or 239,000 Miles ")
-fig, ax = plt.subplots(figsize =(10,10))
-earth = plt.Circle((0,0), 1, color='blue', label='Earth')
-ax.add_artist(earth)
+fig = go.Figure()
+
+fig.add_trace(go.Scatter(
+    x=[0], y=[0],
+    mode='markers+text',
+    marker=dict(size=20, color='blue'),
+    text=["Earth"],
+    textposition="top center"
+))
 scale_factor = 1e-1
 for neo in objects:
     distance = neo["Miss Distance (Lunar)"] * scale_factor
     angle = np.random.uniform(0,2* np.pi)
     x = (distance + 1.5) * np.cos(angle)
     y = (distance + 1.5) * np.sin(angle)
-    ax.plot(x, y, 'ro')
-    ax.text(x, y, f"{neo['Name']}",
-             fontsize=6, ha='left')
-    
-max_distance = max(neo["Miss Distance (Lunar)"] for neo in objects) * scale_factor * 1.1
-ax.set_xlim(-max_distance, max_distance)
-ax.set_ylim(-max_distance, max_distance)
-ax.set_xlabel("Distance (scaled) Lunar units")
-ax.set_ylabel("Distance (scaled)Lunar units")
-ax.set_title("Near-Earth Objects Distance Plot")
-ax.grid(True)
-ax.set_aspect('equal', adjustable='box')
+    fig.add_trace(go.Scatter(
+        x=[x], y=[y],
+        mode='markers+text',
+        marker=dict(size=8, color='red'),
+        text=[f"{neo['Name']} ({neo['Miss Distance (km)']:,} km)"],
+        textposition="top right"
+    ))
 
-st.pyplot(fig)
+    
+fig.update_layout(
+    title="Near-Earth Objects Distance Plot (Zoomable)",
+    xaxis_title="Distance (scaled)",
+    yaxis_title="Distance (scaled)",
+    xaxis=dict(scaleanchor="y", scaleratio=1),
+    yaxis=dict(scaleanchor="x", scaleratio=1),
+    showlegend=False,
+    hovermode='closest'
+)
+
+st.plotly_chart(fig, use_container_width=True)
