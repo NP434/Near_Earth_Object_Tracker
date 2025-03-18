@@ -51,4 +51,4 @@ def get_data() -> list:
 
 def reset_cache() -> None:
     """Clears the data cache"""
-    get_data().clear
+    get_data.clear()
