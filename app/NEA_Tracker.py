@@ -35,7 +35,7 @@ for neo in objects:
     fig.add_trace(go.Scatter(
         x=[x], y=[y],
         mode='markers+text',
-        marker=dict(size=4, color='red'),
+        marker=dict(size=6, color='red'),
         text=[f"{neo['Name']}"],
         textposition="bottom right",
         textfont=dict(size=8)
