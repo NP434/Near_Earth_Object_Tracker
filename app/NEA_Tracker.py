@@ -22,8 +22,8 @@ scale_factor = 1e-1
 for neo in objects:
     distance = neo["Miss Distance (Lunar)"] * scale_factor
     angle = np.random.uniform(0,2* np.pi)
-    x = distance * np.cos(angle)
-    y = distance * np.sin(angle)
+    x = (distance + 2) * np.cos(angle)
+    y = (distance + 2) * np.sin(angle)
     ax.plot(x, y, 'ro')
     ax.text(x, y, f"{neo['Name']}",
              fontsize=4, ha='right')
@@ -31,8 +31,8 @@ for neo in objects:
 max_distance = max(neo["Miss Distance (Lunar)"] for neo in objects) * scale_factor * 1.1
 ax.set_xlim(-max_distance, max_distance)
 ax.set_ylim(-max_distance, max_distance)
-ax.set_xlabel("Distance (scaled)")
-ax.set_ylabel("Distance (scaled)")
+ax.set_xlabel("Distance (scaled) Lunar units")
+ax.set_ylabel("Distance (scaled)Lunar units")
 ax.set_title("Near-Earth Objects Distance Plot")
 ax.grid(True)
 ax.set_aspect('equal', adjustable='box')
