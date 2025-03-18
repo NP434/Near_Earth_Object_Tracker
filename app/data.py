@@ -21,12 +21,15 @@ def get_data() -> dict:
                 dump(raw_data, file, indent = 4, sort_keys= True)
             neos_data = raw_data.get('near_earth_objects', {})
            
-            neo_lst = []
-            total_neos = 0
-            for date_key, neos_per_date in neos_data.items():
-                total_neos = len(neos_per_date)
-                
-                neo_lst.extend = [{
+        neo_list = []  # Flat list for display
+        total_count = 0  # Track total count
+
+        for date_key, neos_on_date in neos_data.items():
+            total_count += len(neos_on_date)  # Update total count
+
+            # Process NEO details and append to neo_list
+            neo_list.extend([
+                {
                     "Date": date_key,
                     "Name": neo['name'],
                     "Diameter (km)": round(neo['estimated_diameter']['kilometers']['estimated_diameter_max'], 2),
@@ -36,9 +39,11 @@ def get_data() -> dict:
                     "Velocity (miles/h)": round(float(neo['close_approach_data'][0]['relative_velocity']['miles_per_hour']), 2),
                     "Miss Distance (km)": round(float(neo['close_approach_data'][0]['miss_distance']['kilometers']), 2),
                     "Miss Distance (miles)": round(float(neo['close_approach_data'][0]['miss_distance']['miles']), 2)
-                } for neo in neos_per_date ]
-                st.session_state["total_count"] = total_neos
-            return neo_lst
+                } for neo in neos_on_date
+            ])
+
+        st.session_state["total_count"] = total_count  # Store total count in Streamlit state
+        return neo_list
     except Exception as e:
         print(e)
 
