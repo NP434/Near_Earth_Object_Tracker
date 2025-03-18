@@ -6,7 +6,7 @@ import streamlit as st
 import os
 
 API_KEY = st.secrets["API_KEY"]
-
+@st.cache_data(ttl= 86400)
 def get_data() -> dict:
 
     current_date = date.today()
@@ -15,7 +15,7 @@ def get_data() -> dict:
         response = get(f"https://api.nasa.gov/neo/rest/v1/feed?start_date={start_date}&end_date={current_date}&api_key={API_KEY}")
         raw_data = response.json()
         if raw_data is None:
-            neo_dict = None
+            neo_list = None
         else:
             with open("asteroids.json", "w") as file:
                 dump(raw_data, file, indent = 4, sort_keys= True)
