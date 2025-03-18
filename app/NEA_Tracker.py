@@ -11,3 +11,6 @@ objects = get_data()
 
 st.title("Near earth Objects")
 st.write(f"### Total Near earth objects over past 7 days: {st.session_state['total_count']}")
+
+chart_data = pd.DataFrame(objects, columns = ["a","b","c"])
+st.bar_chart(chart_data)
