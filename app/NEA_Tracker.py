@@ -8,7 +8,9 @@ st.set_page_config(
 )
 
 objects = get_data()
-
+if objects in None:
+    st.write("No data available")
+    
 st.title("Near earth Objects")
 st.write(f"### Total Near earth objects over past 7 days: {st.session_state['total_count']}")
 for date_key in st.session_state['daily_counts']:
