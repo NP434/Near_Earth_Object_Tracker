@@ -26,7 +26,7 @@ fig.add_trace(go.Scatter(
     text=["Earth"],
     textposition="top center"
 ))
-scale_factor = 1e-1
+scale_factor = 1e-7
 for neo in objects:
     distance = neo["Miss Distance (Lunar)"] * scale_factor
     angle = np.random.uniform(0,2* np.pi)
