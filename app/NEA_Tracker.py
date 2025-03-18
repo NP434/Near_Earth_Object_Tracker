@@ -10,13 +10,18 @@ st.set_page_config(
 objects = get_data()
 
 st.title("Near earth Objects over the past week")
+total_objects = 0
+counts = {}
+for date, date_data in object.items():
+    if date != "total_objects":  # Ensure we don't count the total key
+        daily_count = len(date_data)
+        counts[date] = daily_count
+        total_objects += daily_count
 
-neo_list = []
-for date_key, neos_on_date in objects.items():
-    for neo in neos_on_date:
-        neo_entry = {"Date": date_key}
-        neo_entry.update(neo)
-        neo_list.append(neo_entry)
-df = pd.DataFrame(neo_list)
-st.dataframe(df, hide_index=True, use_container_width=True)
+    # Display counts in Streamlit
+st.write("### NEO Count Per Day:")
+for date, count in counts.items():
+    st.write(f"**{date}**: {count} NEO(s)")
+
+st.write(f"### Total NEOs Over Period: {total_objects}")
 
