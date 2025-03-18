@@ -36,3 +36,5 @@ ax.set_ylabel("Distance (scaled)")
 ax.set_title("Near-Earth Objects Distance Plot")
 ax.grid(True)
 ax.set_aspect('equal', adjustable='box')
+
+st.pyplot(fig)
