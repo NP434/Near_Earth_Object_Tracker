@@ -3,6 +3,7 @@ from data import get_data
 import numpy as np
 import matplotlib.pyplot as plt
 
+
 st.set_page_config(
     page_title="Near Earth Asteroid Tracker"
 )
@@ -15,7 +16,7 @@ st.title("Near earth Objects")
 st.write(f"### Total Near earth objects over past 7 days: {st.session_state['total_count']}")
 
 fig, ax = plt.subplots(figsize =(8,8))
-earth = plt.circle((0,0), 1, color='blue', label='Earth')
+earth = plt.Circle((0,0), 1, color='blue', label='Earth')
 ax.add_artist(earth)
 scale_factor = 1e-7
 for neo in objects:
