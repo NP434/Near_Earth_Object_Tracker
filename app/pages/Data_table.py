@@ -13,4 +13,5 @@ if units == "Metric":
     df = df.drop(columns=["Diameter (ft)", "Velocity (miles/h)"], errors="ignore")
 else:
     df = df.drop(columns=["Diameter (km)", "Velocity (km/h)"], errors="ignore")
-col1.st.dataframe(df, hide_index=True)
+with col1:
+    st.dataframe(df, hide_index=True)
