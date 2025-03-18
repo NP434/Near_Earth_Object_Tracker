@@ -56,4 +56,5 @@ fig.update_layout(
 
 st.plotly_chart(fig, use_container_width=True)
 st.write("DISCLAIMER: in the above graph, the angular positon of the markers is not representative of the N.E.O's actual positon, but is used"
-        " to demonstrate the distance of the object without clustering the objects in a line.")
+        " to demonstrate the distance of the object without clustering the objects in a line. This also results in the angular position of each object varying when refreshing the data,"
+        "but the distance remains the same.")
