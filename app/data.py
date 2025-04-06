@@ -4,7 +4,7 @@ Date completed: 3/18/2025
 Credits: Chatgpt helped to refine the data sorting and improve optimization and synergy with streamlits perfered data structures
 """
 from json import dump, load
-from datetime import date
+from datetime import date, timedelta
 from requests import get
 import streamlit as st
 import os
@@ -21,7 +21,7 @@ except KeyError:
 def get_data() -> list:
     """This function is responsible for obtaining and formating the NEO data from the Nasa API"""
     current_date = date.today()
-    start_date = (current_date.replace(day = current_date.day - 7)) # get range for last seven days
+    start_date = current_date - timedelta(days=7) # get range for last seven days
     try:
         response = get(f"https://api.nasa.gov/neo/rest/v1/feed?start_date={start_date}&end_date={current_date}&api_key={API_KEY}")
         raw_data = response.json() 
