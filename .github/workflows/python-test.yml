@@ -1,0 +1,39 @@
+# This workflow will install Python dependencies, run tests and lint with a single version of Python
+# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-python
+
+name: run-tests
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    env:
+      PYTHONPATH: "./app"
+      
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+    - name: Set up Python ${{env.PYTHON_VERSION }}
+      uses: actions/setup-python@v5
+      with:
+        python-version: ${{env.PYTHON_VERSION }}
+    - name: Virtual environment setup and start
+      run: |
+        python -m venv venv
+        source venv/bin/activate
+    - name: install requirements
+      run: |
+        pip install -r tests/requirements.txt
+        pip install -r ./requirements.txt
+    - name: Test with pytest
+      run: pytest
+      env:
+        API_KEY: ${{secrets.API_KEY }}
