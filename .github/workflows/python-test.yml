@@ -2,7 +2,8 @@
 # For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-python
 
 name: run-tests
-
+env:
+  PYTHON_VERSION: "3.13"
 on:
   push:
     branches: [ "main" ]
@@ -25,14 +26,17 @@ jobs:
       uses: actions/setup-python@v5
       with:
         python-version: ${{env.PYTHON_VERSION }}
+        
     - name: Virtual environment setup and start
       run: |
         python -m venv venv
         source venv/bin/activate
+        
     - name: install requirements
       run: |
         pip install -r tests/requirements.txt
         pip install -r ./requirements.txt
+        
     - name: Test with pytest
       run: pytest
       env:
