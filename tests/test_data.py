@@ -1,6 +1,6 @@
 
 import pytest
-from app.data import get_data
+from data import get_data
 
 @pytest.fixture
 def data():
