@@ -8,13 +8,14 @@ import streamlit as st
 import numpy as np
 import plotly.graph_objects as go
 st.set_page_config( # Placed to allow the test to function without the need for the API_KEY.
-    page_title="Near Earth Asteroid Tracker"
+    page_title="Near Earth Asteroid Tracker",
+    layout="wide"
 )
 st.markdown(
     """
     <style>
-    body {
-        background: linear-gradient(to bottom, #87CEEB, #000000);
+    html, body [data-testid="stAppViewContainer"] {
+        background: linear-gradient(to bottom, #000000 40%, #00BFFF);
         color: white;
     }
     .stApp {
@@ -29,7 +30,14 @@ st.markdown(
         background-color: transparent;
         color: white;
     }
+    section[data-testid="stSidebar"] {
+        background-color: rgba(0, 0, 0, 0.7);
+        color: white;
+    }
     thead tr th {
+        color: white !important;
+    }
+        .css-ffhzg2 {  /* sometimes used for headers and labels */
         color: white !important;
     }
     </style>
