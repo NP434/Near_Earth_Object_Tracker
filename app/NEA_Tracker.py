@@ -23,13 +23,16 @@ st.markdown(
 
     .stRadio > div {
         background-color: transparent;
+        
     }
-    </style>
-    
     .stSelectbox, .stTextInput, .stButton, .stDataFrame {
         background-color: transparent;
         color: white;
     }
+    thead tr th {
+        color: white !important;
+    }
+    </style>
     """,
     unsafe_allow_html=True
 )
