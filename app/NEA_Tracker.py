@@ -10,6 +10,29 @@ import plotly.graph_objects as go
 st.set_page_config( # Placed to allow the test to function without the need for the API_KEY.
     page_title="Near Earth Asteroid Tracker"
 )
+st.markdown(
+    """
+    <style>
+    body {
+        background: linear-gradient(to bottom, #87CEEB, #000000);
+        color: white;
+    }
+    .stApp {
+        color: white;
+    }
+
+    .stRadio > div {
+        background-color: transparent;
+    }
+    </style>
+    
+    .stSelectbox, .stTextInput, .stButton, .stDataFrame {
+        background-color: transparent;
+        color: white;
+    }
+    """,
+    unsafe_allow_html=True
+)
 from data import get_data,reset_cache
 
 objects, total_count = get_data()
